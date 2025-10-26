@@ -1,0 +1,21 @@
+---
+- name: To create a folder
+  hosts: web
+
+  tasks:
+  - name: to create a folder
+    file:
+      path: /home/ubuntu/DemoFolder
+      state: directory
+      mode: "0755"
+
+  - name: to create a file inside the created folder
+    file:
+      path: /home/ubuntu/DemoFolder/app.js
+      state: touch
+      mode: "0644"
+
+  - name: to add content in the created folder
+    lineinfile:
+      path: /home/ubuntu/DemoFolder/app.js
+      line: "console.log('Hello from node js');"
