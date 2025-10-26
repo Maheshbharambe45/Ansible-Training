@@ -1,0 +1,17 @@
+---
+- name: testing variables
+  hosts: localhost
+  # become: yes
+
+  vars:
+    filename: test.txt
+
+  tasks:
+  - name: to create file
+    file:
+      path: /home/mahesh/Ansible-Training/{{ filename }}
+      state: touch
+
+
+# command
+# ansible-playbook  var.yml --ask-become-pass

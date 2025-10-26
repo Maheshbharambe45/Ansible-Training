@@ -1,0 +1,14 @@
+---
+- name: To update os
+  hosts: web
+  become: yes
+
+  tasks:
+  - name: updating os
+    apt:
+      update_cache: yes
+
+  - name: installing tree package
+    apt:
+      name: tree
+      state: present
