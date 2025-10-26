@@ -1,0 +1,18 @@
+---
+- name: To create file
+  hosts: web
+
+  tasks:
+  - name: create file
+    file:
+      path: /home/ubuntu/myfile.txt
+      state: touch
+      mode: "0644"
+  
+  - name:
+    lineinfile:
+      path: /home/ubuntu/myfile.txt
+      line: "This is content add from the ansible"
+
+# command
+#  ansible-playbook -i inventory.ini createFile.yml
