@@ -1,0 +1,13 @@
+- name: Create multiple users
+  hosts: localhost
+  become: true
+  tasks:
+    - name: Ensure user {{ item.name }} exists with UID {{ item.uid }}
+      ansible.builtin.user:
+        name: "{{ item.name }}"
+        uid: "{{ item.uid }}"
+        state: present
+      loop:
+        - { name: 'alice', uid: 1001 }
+        - { name: 'bob', uid: 1002 }
+        - { name: 'charlie', uid: 1003 }

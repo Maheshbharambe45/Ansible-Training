@@ -1,0 +1,26 @@
+---
+- name: installing the software
+  hosts: localhost
+  become: yes
+
+  tasks:
+  - name: downloading software
+    apt:
+      name: nginx
+      state: present
+  
+  - name: start the software
+    service:
+      name: nginx
+      state: started
+      enabled: true
+
+  - name: Check if Nginx
+    uri:
+      url: "http://localhost"
+      return_content: yes
+    register: nginx_response
+
+  - name: Show Nginx homepage 
+    debug:
+      var: nginx_response.content
