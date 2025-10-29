@@ -1,0 +1,12 @@
+---
+- name: To delete user using Ansible
+  hosts: localhost
+  become: yes
+
+  tasks:
+  - name: to delete user using plakbook
+    user:
+      name: Mahii
+      shell: /bin/bash
+      state: absent  #To delete the user
+      remove: yes #To delete user data also

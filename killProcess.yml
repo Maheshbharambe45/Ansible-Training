@@ -1,0 +1,9 @@
+---
+- name: Delete process using ansible
+  hosts: localhost
+  become: yes
+
+  tasks:
+    - name: killing process using ansible
+      ignore_errors: yes
+      shell: "pgrep nginx | xargs kill"
