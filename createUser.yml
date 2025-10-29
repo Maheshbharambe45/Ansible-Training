@@ -1,0 +1,12 @@
+---
+- name: Create user using ansible plakbook
+  hosts: localhost
+  become: yes
+
+  tasks:
+  - name: Create user using ansible
+    user: 
+      name: Mahii
+      comment: new user adding in DEV team
+      shell: /bin/bash
+      

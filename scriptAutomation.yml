@@ -1,0 +1,9 @@
+---
+- name: To run the script
+  hosts: localhost
+  become: yes
+
+  tasks:
+  - name: run the script
+    shell: ./script.sh  
+    

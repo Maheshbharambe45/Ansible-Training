@@ -1,0 +1,12 @@
+---
+- name: creating backup after some change in the files
+  hosts: localhost
+  become: true
+
+  tasks:
+  - name: copying files from one directory to another
+    copy:
+      src: /home/mahesh/ansible/users.yml
+      dest: /home/mahesh/Ansible-Training
+      backup: true
+      mode: "0777"

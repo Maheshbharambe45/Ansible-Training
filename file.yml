@@ -1,0 +1,14 @@
+---
+- name: to create file
+  hosts: localhost
+  become: yes
+
+  tasks:
+    - name: to create a file
+      file:
+        path: /home/mahesh/Ansible-Training/abc.txt
+        state: touch
+        mode: "0644"
+
+    - name: to remmove a created file
+      shell: rm -f /home/mahesh/Ansible-Training/abc.txt
