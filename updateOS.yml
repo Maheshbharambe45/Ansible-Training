@@ -12,3 +12,9 @@
     apt:
       name: tree
       state: present
+
+  - name: creting a file
+    file:
+      path: /home/ubuntu/mahesh
+      state: directory
+      mode: '0755' 
