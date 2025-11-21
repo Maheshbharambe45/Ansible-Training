@@ -1,0 +1,11 @@
+---
+- name: installing package in remote machine
+  hosts: web
+  become: true
+
+  tasks:
+  - name: installing  the software on the remote server
+    apt:
+      name: libaa-bin
+      state: present
+  

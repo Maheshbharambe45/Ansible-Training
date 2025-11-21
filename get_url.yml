@@ -1,0 +1,12 @@
+---
+- name: download files from the url 
+  hosts: web
+  become: true
+
+  tasks:
+  - name: download files
+    get_url:
+      url: "https://www.python.org/ftp/python/3.13.9/python-3.13.9-amd64.exe"
+      dest: /home/ubuntu
+      owner: ubuntu
+      mode: '0755'

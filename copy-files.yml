@@ -1,11 +1,22 @@
 ---
 - name: copy files from one directory to another directory
-  hosts: localhost
-  become: yes
+  hosts: web
+  become: true
 
   tasks:
-  - name: copying files from one directory to another
+  - name: copy files form local to remote
     copy:
-      src: /home/mahesh/ansible/users.yml
-      dest: /home/mahesh/Ansible-Training
-  
+      src: /home/mahesh/Ansible-Training/var.yml
+      dest: /home/ubuntu
+
+  - name: creating a file
+    file:
+      name: app.js
+      state: touch
+      mode: '0655'
+
+  - name: creating a directory
+    file: 
+      path: /home/ubuntu/hey-aws
+      state: directory
+      mode: '0755'

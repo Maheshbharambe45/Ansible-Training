@@ -1,0 +1,29 @@
+---
+- name: installing a software
+  hosts: web
+  become: true
+  vars:
+    app: nginx
+
+  tasks:
+  - name: install nginx
+    apt:
+      name: "{{ app }}"
+      state: present
+    tags: i-nging
+    when: ansible_os_family == "Ubuntu"
+  
+  # - name: starting the software
+  #   service:
+  #     name: "{{ app }}"
+  #     state: started
+  #     enabled: true
+  #   tags: s-nginx
+
+  tasks:
+  - name: install nginx
+    yum:
+      name: "{{ app }}"
+      state: present
+    tags: i-nging
+    when: ansible_os_family == "RedHat"     

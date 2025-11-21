@@ -1,0 +1,11 @@
+---
+- name: first playbook for practise
+  hosts: localhost
+
+  tasks:
+  - name: test connectivity
+    ping: 
+
+  - name: Default message after ping
+    debug:
+      msg: "Hello this is message after pinging"

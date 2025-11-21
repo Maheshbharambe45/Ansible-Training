@@ -1,0 +1,17 @@
+---
+- name: creating user using loop
+  hosts: web
+  become: true
+
+  tasks:
+  - name: creating user
+    user: 
+      name: "{{ item }}"   #item referrning the loop
+      shell: /bin/bash
+      state: present
+    loop:
+     - mahesh
+     - sagar
+     - raju
+     - paka  
+   

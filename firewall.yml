@@ -1,0 +1,15 @@
+---
+- name: opening firewall rules
+  hosts: web
+  become: true
+
+  tasks:
+  - name: open ufw
+    ufw:
+      rule: allow
+      port: "80"
+      proto: tcp
+
+  - name: reload ufw
+    ufw:
+      state: enabled

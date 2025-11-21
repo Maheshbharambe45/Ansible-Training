@@ -1,6 +1,6 @@
 ---
 - name: Delete process using ansible
-  hosts: localhost
+  hosts: web
   become: yes
 
   tasks:

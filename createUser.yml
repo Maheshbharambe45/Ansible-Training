@@ -1,7 +1,7 @@
 ---
 - name: Create user using ansible plakbook
-  hosts: localhost
-  become: yes
+  hosts: web
+  become: true
 
   tasks:
   - name: Create user using ansible
@@ -9,4 +9,14 @@
       name: Mahii
       comment: new user adding in DEV team
       shell: /bin/bash
-      
+      groups: sudo
+      append: yes       
+  
+  - name: Create user using ansible
+    user:
+      name: bhagya
+      comment: adding new user in ops team
+      shell: /bin/bash
+      groups: sudo
+      append: yes  #if user already exists  
+      state: absent # to delete the user
