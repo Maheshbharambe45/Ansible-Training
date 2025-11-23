@@ -1,0 +1,14 @@
+---
+- name: updating the package with user permission
+  hosts: web
+  become: true
+
+  vars_prompt:
+  - name: os_update
+    prompt: please enter only YES/yes or NO/no
+    private: no
+
+  tasks:
+  - name: updating the os
+    apt:
+      update_cache: "{{ os_update }}"

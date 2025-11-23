@@ -1,0 +1,15 @@
+---
+- name: demo of vars_prompt
+  hosts: web
+  become: true 
+
+  vars_prompt:
+  - name: package_name
+    prompt: put the package_name
+    private: no
+  
+  tasks:
+  - name: installing the software
+    apt:
+      name: "{{ package_name }}"
+      state: present

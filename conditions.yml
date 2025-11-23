@@ -1,0 +1,27 @@
+# conditions
+---
+- name: using conditions
+  hosts: web
+  become: true
+
+  vars_prompt:
+  - name: app_name
+    prompt: enter the package name
+    private: no
+
+  vars:
+    app: nginx
+    type: apt
+
+  tasks:
+  - name: installing the package
+    apt:
+      name: "{{ app_name }}"
+    when: app == "tree"  # It will skip the package if conditions does not match
+
+  - name: installing the package according to type
+    apt:
+      name: "{{ app_name }}"
+    when: 
+      - app == "tree"  # type 2 
+      - type == "apt"

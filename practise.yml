@@ -1,0 +1,25 @@
+---
+- name: To practise the Ansible
+  hosts: web
+  become: true
+
+  tasks:
+  - name: update the os
+    apt:
+      update_cache: yes
+
+  - name: installing tree
+    apt:
+      name: tree
+      state: present
+
+  - name: installing_nginx
+    apt:
+      name: nginx
+      state: present
+
+  - name: starting nginx
+    service:
+      name: nginx
+      state: started
+      enabled: true
