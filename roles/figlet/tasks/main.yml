@@ -1,0 +1,4 @@
+- name: Install figlet package
+  apt:
+    name: figlet
+    state: present

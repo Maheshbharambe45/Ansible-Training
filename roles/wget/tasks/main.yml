@@ -1,0 +1,6 @@
+---
+# tasks file for wget
+- name:
+  apt:
+    name: wget
+    state: present
