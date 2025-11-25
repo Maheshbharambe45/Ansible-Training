@@ -1,25 +1,18 @@
 ---
-- name: To practise the Ansible
-  hosts: web
-  become: true
+- name: conditions in ansible
+  hosts: web 
+  become: yes
+
+  vars_files:
+    - var.yml
 
   tasks:
-  - name: update the os
-    apt:
-      update_cache: yes
+    - name: installing_the_package
+      apt:
+        name: "{{ app_name }}"
+        state: present
+      tags: install
 
-  - name: installing tree
-    apt:
-      name: tree
-      state: present
-
-  - name: installing_nginx
-    apt:
-      name: nginx
-      state: present
-
-  - name: starting nginx
-    service:
-      name: nginx
-      state: started
-      enabled: true
+    - name: cloning the repo
+      debug:
+        msg: name is {{ name }}

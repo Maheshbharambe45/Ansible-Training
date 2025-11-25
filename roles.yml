@@ -1,0 +1,9 @@
+---
+- name: run using roles
+  hosts: web
+  become: true
+
+  roles:
+    # - Install-Nginx
+    - wget
+    - Install-Nginx
