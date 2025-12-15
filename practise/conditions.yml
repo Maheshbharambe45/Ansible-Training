@@ -1,0 +1,15 @@
+---
+- name: using when conditions
+  hosts: web
+  become: true
+
+  vars:
+    nginx: true
+    apt: true
+
+  tasks:
+    - name: using when conditions nginx
+      ansible.builtin.apt:
+        name: nginx
+        state: present
+      when: nginx

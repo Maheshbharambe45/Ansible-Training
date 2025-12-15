@@ -1,0 +1,14 @@
+---
+- name: for file
+  hosts: web
+  become: true
+
+  vars_files:
+    vars.yml
+
+  tasks:
+    - name: creating a file
+      ansible.builtin.file:
+        name: "{{ file_name }}"
+        mode: "0777"
+        state: touch

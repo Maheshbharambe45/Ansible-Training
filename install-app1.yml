@@ -20,7 +20,7 @@
   #     enabled: true
   #   tags: s-nginx
 
-  tasks:
+  # tasks:
   - name: install nginx
     yum:
       name: "{{ app }}"

@@ -1,0 +1,25 @@
+---
+- name: creating a file on remote
+  hosts: web
+  become: true
+
+  tasks:
+    - name: creating a file on ubuntu
+      ansible.builtin.file:
+        name: app.js
+        mode: "0766"
+        state: touch
+
+    - name: creating a folder on ubuntu
+      ansible.builtin.file:
+        name: modules
+        mode: "0766"
+        state: directory
+
+    - name: creating a file on ubuntu
+      ansible.builtin.file:
+        name: modules/app.js
+        mode: "0766"
+        state: touch
+
+        

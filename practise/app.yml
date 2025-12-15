@@ -1,0 +1,10 @@
+---
+- name: Installing the application
+  hosts: web
+  become: true
+
+  tasks:
+    - name: Installing figlet
+      apt:
+        name: figlet
+        state: present

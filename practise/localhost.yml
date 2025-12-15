@@ -1,0 +1,15 @@
+---
+- name: "ins these we are using localhost"
+  hosts: localhost
+
+  tasks:
+    - name: Using localhost
+      apt:
+        name: nginx
+        state: present
+
+    - name: starting nginx
+      service:
+        name: nginx
+        state: started
+        

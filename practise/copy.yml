@@ -1,0 +1,10 @@
+---
+- name: Copy from local to remote
+  hosts: web
+  become: true
+
+  tasks:
+    - name: Copy from local to remote
+      copy:
+        src: ./app.yml
+        dest: /home/ubuntu
