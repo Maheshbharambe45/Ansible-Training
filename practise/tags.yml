@@ -1,0 +1,25 @@
+---
+- name: updating the system
+  hosts: web
+  become: true
+
+  tasks:
+    - name: updating the packages
+      ansible.builtin.apt:
+        update_cache: yes
+      tags: updating
+
+    - name: tree installation
+      ansible.builtin.apt:
+        name: tree
+      tags: tree
+
+    - name: git_installation
+      ansible.builtin.apt:
+        name: git
+      tags: git
+
+    - name: figlet installation
+      ansible.builtin.apt:
+        name: figlet
+      tags: figlet

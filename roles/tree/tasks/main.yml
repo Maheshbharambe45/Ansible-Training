@@ -1,0 +1,13 @@
+---
+# tasks file for tree
+- name: install tree
+  ansible.builtin.apt:
+    name: tree
+    state: present
+
+- name: create file
+  ansible.builtin.file:
+    name: style.css
+    state: touch
+
+

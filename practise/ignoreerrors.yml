@@ -1,0 +1,10 @@
+---
+- name: Ignore errors in ansible
+  hosts: web
+  become: true
+
+  tasks:
+    - name: Installing the package
+      ansible.builtin.apt:
+        name: toilest
+      ignore_errors: true
