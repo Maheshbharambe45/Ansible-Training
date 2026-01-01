@@ -1,18 +1,15 @@
 ---
-- name: conditions in ansible
-  hosts: web 
-  become: yes
-
-  vars_files:
-    - var.yml
+- name: test yaml playbook
+  hosts: web
+  become: true
 
   tasks:
-    - name: installing_the_package
-      apt:
-        name: "{{ app_name }}"
+    - name: Nginx package download
+      ansible.builtin.apt:
+        name: nginx
         state: present
-      tags: install
 
-    - name: cloning the repo
-      debug:
-        msg: name is {{ name }}
+    - name: Starting the service
+      ansible.builtin.service:
+        name: nginx
+        state: started

@@ -1,0 +1,16 @@
+# ansible-vault create secrets.yml
+---
+- name: using the ansible ansible-vault
+  hosts: web
+  become: true
+
+  vars_files:
+    - secrets.yml
+
+  tasks:
+    - name: print the pass
+      ansible.builtin.debug:
+        msg: "{{ Pass }}"
+
+
+#  ansible-playbook -i inventory.ini vault.yml --ask-vault-pass

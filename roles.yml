@@ -5,5 +5,4 @@
 
   roles:
     # - Install-Nginx
-    - wget
-    - Install-Nginx
+    - figlet
