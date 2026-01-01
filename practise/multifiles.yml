@@ -1,0 +1,18 @@
+---
+- name: touching the files using loop
+  hosts: web
+  become: true
+
+  tasks:
+    - name: Creating multiple files using loop
+      ansible.builtin.file:
+        name: "{{ item }}"
+        state: touch
+      loop:
+        - index.html
+        - style.css
+        - app.js
+        - server.js
+        - init.sql
+        - main.sh
+        

@@ -1,14 +1,23 @@
 ---
-- name: for file
+- name: vars session started
   hosts: web
   become: true
 
-  vars_files:
-    vars.yml
+  vars_files: 
+    - vars.yml
 
   tasks:
+    - name: using vars installing the package
+      ansible.builtin.apt:
+        name: "{{ pkg_name }}"
+    
     - name: creating a file
       ansible.builtin.file:
         name: "{{ file_name }}"
-        mode: "0777"
         state: touch
+
+    - name: content for the file
+      ansible.builtin.copy:
+        dest: /home/ubuntu/mahesh.html
+        content: |
+          heyyy these is for You 11.

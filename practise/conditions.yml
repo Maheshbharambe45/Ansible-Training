@@ -1,15 +1,13 @@
 ---
-- name: using when conditions
+- name: Use conditionals to run specific tasks
   hosts: web
   become: true
 
   vars:
     nginx: true
-    apt: true
 
   tasks:
-    - name: using when conditions nginx
+    - name: using when conditionals
       ansible.builtin.apt:
         name: nginx
-        state: present
-      when: nginx
+      when: nginx == false

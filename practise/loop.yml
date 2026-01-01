@@ -1,18 +1,18 @@
 ---
-- name: create files using loop
+- name: installing a packages using loop
   hosts: web
   become: true
 
   tasks:
-    - name: creating a file using loop
-      ansible.builtin.file:
+    - name: installing a series of packages with loops
+      ansible.builtin.apt:
         name: "{{ item }}"
-        state: touch
-        mode: "0766"
-      loop:
-        - index.html
-        - render.js
-        - db.sql
-        - app.py
 
-        
+      loop:
+        - git
+        - wget
+        - curl
+        - tree
+        - figlet
+    - name: executing a command using the command module
+      ansible.builtin.command: figlet "Happy New Year 2K26"

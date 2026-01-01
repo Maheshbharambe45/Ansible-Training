@@ -1,0 +1,17 @@
+---
+- name: creating a file and adding the content in the file
+  hosts: web
+  become: true
+
+  tasks:
+    - name: creating a file
+      ansible.builtin.file:
+        name: data.txt
+        state: touch
+        
+    - name: add data in the file
+      ansible.builtin.copy:
+        dest: data.txt
+        content: |
+          hello world
+          I LOVE DevOps

@@ -1,0 +1,13 @@
+# ansible-vault create secrets.yml
+---
+- name: using the ansible ansible-vault
+  hosts: web
+  become: true
+
+  vars_files:
+    - secrets.yml
+
+  tasks:
+    - name: print the pass
+      ansible.builtin.debug:
+        msg: "{{ pass }}"
