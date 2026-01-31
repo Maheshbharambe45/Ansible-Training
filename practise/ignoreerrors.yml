@@ -8,3 +8,9 @@
       ansible.builtin.apt:
         name: toilest
       ignore_errors: true
+
+    - name: creating the file
+      ansible.builtin.file:
+        name: myfile
+        ddd:
+      ignore_errors: true
