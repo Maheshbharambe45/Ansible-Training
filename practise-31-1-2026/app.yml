@@ -1,0 +1,24 @@
+---
+- name: Installing Nginx on EC2
+  hosts: web
+  become: true
+
+  tasks:
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: present
+      
+    - name: starting the nginx service
+      service:
+        name: nginx
+        state: started
+
+    - name: Runnig a command
+      ansible.builtin.shell: |
+        echo "HEllo From Ansible ${HOSTNAME}" > /usr/share/nginx/html/index.html
+
+    - name: Reload nginx
+      service:
+        name: nginx
+        state: reloaded

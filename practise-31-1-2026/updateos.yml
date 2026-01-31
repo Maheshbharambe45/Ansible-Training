@@ -1,0 +1,9 @@
+---
+- name: updating the os
+  hosts: web
+  become: true
+
+  tasks:
+    - name: updating the os through ansible
+      apt:
+        update_cache: yes

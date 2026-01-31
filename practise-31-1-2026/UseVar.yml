@@ -1,0 +1,18 @@
+---
+- name: variable demo
+  hosts: web
+  become: true
+
+  vars:
+    src: ./app.yml
+    dest: /home/ubuntu
+
+  tasks:
+    -  name: Copy local file to remote
+       ansible.builtin.copy:
+          src: "{{ src }}"
+          dest: "{{ dest }}"
+    
+    - name: showing the message
+      ansible.builtin.debug:
+        msg: "File copied from local {{ src }} to the remote {{ dest }}"
