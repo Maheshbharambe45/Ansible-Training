@@ -1,0 +1,70 @@
+---
+- name: Playbook with 10 tasks and tags
+  hosts: web
+  become: true
+
+  vars:
+    pkg_name: git
+    file_path: /tmp/samplefile.txt
+    dir_path: /tmp/sampledir
+
+  tasks:
+
+    - name: Install Git
+      apt:
+        name: "{{ pkg_name }}"
+        state: present
+      tags: install_git
+
+    - name: Create a directory
+      file:
+        path: "{{ dir_path }}"
+        state: directory
+      tags: create_dir
+
+    - name: Create a file
+      copy:
+        content: "Hello World"
+        dest: "{{ file_path }}"
+      tags: create_file
+
+    - name: Add a user
+      user:
+        name: testuser
+        state: present
+      tags: add_user
+
+    - name: Start nginx service
+      service:
+        name: nginx
+        state: started
+      tags: start_nginx
+
+    - name: Stop nginx service
+      service:
+        name: nginx
+        state: stopped
+      tags: stop_nginx
+
+    - name: Install curl
+      apt:
+        name: curl
+        state: present
+      tags: install_curl
+
+    - name: Remove temporary file
+      file:
+        path: /tmp/remove_me.txt
+        state: absent
+      tags: remove_file
+
+    - name: Show debug message
+      debug:
+        msg: "This is a debug message"
+      tags: debug_message
+
+    - name: Install htop
+      apt:
+        name: htop
+        state: present
+      tags: install_htop

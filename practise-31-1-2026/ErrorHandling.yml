@@ -1,0 +1,19 @@
+---
+- name: Using with tags
+  hosts: web
+  become: true
+
+  tasks:
+    - name: install nginx
+      apt:
+        name: nginxdd
+        state: present
+      tags: install
+      ignore_errors: yes
+    
+    - name: start service
+      ansible.builtin.service:
+        name: nginxdd
+        state: started
+      tags: start
+      ignore_errors: yes

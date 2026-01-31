@@ -1,0 +1,13 @@
+---
+- name: Using variable to install packages
+  hosts: web
+  become: true
+
+  vars:
+    package: figlet
+
+  tasks: 
+    - name: Installing the package using the variable
+      apt:
+        name: "{{ package }}"
+        state: present

@@ -1,0 +1,17 @@
+---
+- name: installing packages through the loops
+  hosts: web
+  become: yes
+
+  tasks:
+    - name: Installing multiple packages
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - git
+        - curl
+        - nginx
+        - wget
+        - python3
+        

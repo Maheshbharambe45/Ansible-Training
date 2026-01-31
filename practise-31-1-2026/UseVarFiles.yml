@@ -1,0 +1,17 @@
+---
+- name: Using the variable file
+  hosts: web
+  become: true
+
+  vars_files:
+    - var.yml
+
+  tasks:
+    - name: Install nginx
+      ansible.builtin.apt:
+        name: "{{ pkg_name }}"
+        state: present
+    
+    - name: print simple message
+      ansible.builtin.debug:
+        msg: "Hello, {{ name }}! {{ pkg_name }} has been installed."

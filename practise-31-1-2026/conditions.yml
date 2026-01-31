@@ -1,0 +1,17 @@
+---
+- name: Conditional using variable
+  hosts: web
+  become: true
+
+  vars:
+    copy_files : true
+    src: ./var.yml
+    dest: /home/ubuntu
+
+  tasks:
+    - name: Copy file when condition is true
+      copy:
+        src: "{{ src }}"
+        dest: "{{ dest }}"
+      when: copy_files == true 
+      
